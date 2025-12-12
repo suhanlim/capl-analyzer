@@ -4,15 +4,12 @@ use std::fs;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let _file_path = parse_config(&args);
-
-    println!("File {}", _file_path);
-
-    let contents = fs::read_to_string(_file_path).expect("read file");
-
-    println!("With text:\n{contents}")
+    let file_contents = read_file(&args);
+    println!("With text:\n{file_contents}")
 }
 
-fn parse_config(args: &[String]) -> &str {
-    &args[1]
+fn read_file(args: &[String]) -> String {
+    let file_path = &args[1];
+    
+    fs::read_to_string(file_path).expect("read file fail")
 }
