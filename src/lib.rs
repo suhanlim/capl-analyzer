@@ -1,11 +1,13 @@
 use std::fs;
 
-pub fn read_file(args: &[String]) -> String {
+pub fn read_file(args: &[String]) -> Result<String, &'static str> {
     if args.len() == 1{
-        panic!("not input file path");
+        return Err("not input arguments");
     }
 
     let file_path = &args[1];
     
-    fs::read_to_string(file_path).expect("read file fail")
+    let content = fs::read_to_string(file_path).expect("read file fail");
+
+    Ok(content)
 }
