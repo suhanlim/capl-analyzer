@@ -1,6 +1,6 @@
 use std::fs;
 
-pub fn read_file(args: &[String]) -> Result<String, &'static str> {
+pub fn run(args: &[String]) -> Result<String, &'static str> {
     if args.len() == 1{
         return Err("not input arguments");
     }
